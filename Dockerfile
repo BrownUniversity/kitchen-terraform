@@ -18,4 +18,5 @@ WORKDIR /usr/app
 COPY Gemfile /usr/app/
 RUN bundle install
 
+ENTRYPOINT ["/bin/bash"]
 ##
