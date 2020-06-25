@@ -1,8 +1,7 @@
 FROM hashicorp/terraform:latest
-MAINTAINER Hari Om <hom@babbel.com>
 
-ENV BUILD_PACKAGES bash curl-dev ruby-dev build-base
-ENV RUBY_PACKAGES ruby ruby-io-console ruby-bundler
+ENV BUILD_PACKAGES bash curl-dev ruby-dev build-base python3
+ENV RUBY_PACKAGES ruby-full
 
 # Update and install all of the required packages.
 # At the end, remove the apk cache
@@ -15,7 +14,9 @@ RUN apk update && \
 RUN mkdir /usr/app
 WORKDIR /usr/app
 
-COPY Gemfile /usr/app/
+COPY Gemfile .
+RUN gem install bundler
+RUN bundle config set system 'true'
 RUN bundle install
 
 ENTRYPOINT ["/bin/bash"]
