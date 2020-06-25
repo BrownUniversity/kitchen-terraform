@@ -1,5 +1,5 @@
 # kitchen-terraform
-A docker build with base image as official terraform docker image, then ruby and kitchen-terraform installed in next layers.
+A docker image built from the official terraform docker image, then ruby, python, kitchen-terraform, and the packages in the `Gemfile` installed in next layers.
 
 ## Usage
 
@@ -10,3 +10,5 @@ Expected secrets:
 * `GCP_ORG_ID`: GCP organization id for test project
 * `GCP_FOLDER_ID`: GCP folder id for test project
 * `GCP_CREDENTIAL_JSON`: contents of GCP `credentials.json` file
+
+In the workflow, many of these secrets are assigned to environment variables starting with `TF_VAR`. These will be used as terraform variables when running the tests.
