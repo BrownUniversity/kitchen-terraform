@@ -1,6 +1,6 @@
 FROM hashicorp/terraform:latest
 
-ENV BUILD_PACKAGES bash curl-dev ruby-dev build-base python3
+ENV BUILD_PACKAGES bash curl-dev curl ruby-dev build-base python3
 ENV RUBY_PACKAGES ruby-full
 
 # Update and install all of the required packages.
