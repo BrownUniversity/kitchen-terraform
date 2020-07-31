@@ -11,6 +11,9 @@ RUN apk update && \
     apk add $RUBY_PACKAGES && \
     rm -rf /var/cache/apk/*
 
+# Define non-root user
+USER 1000:1000
+
 RUN mkdir /usr/app
 WORKDIR /usr/app
 
