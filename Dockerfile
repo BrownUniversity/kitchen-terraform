@@ -14,15 +14,14 @@ RUN apk update && \
 RUN mkdir /usr/app
 WORKDIR /usr/app
 
-RUN chown 1000 /usr/app
-
-# Define non-root user
-USER 1000:1000
-
 COPY Gemfile .
 RUN gem install bundler
 RUN bundle config set system 'true'
 RUN bundle install
 
+RUN chown -R 1000:1000 /usr/app
+
+# Define non-root user
+USER 1000:1000
 ENTRYPOINT ["/bin/bash"]
-##
+
