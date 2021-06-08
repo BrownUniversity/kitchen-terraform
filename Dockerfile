@@ -1,4 +1,5 @@
-FROM hashicorp/terraform:latest
+ARG TFVERSION=0.15.5
+FROM hashicorp/terraform:${TFVERSION}
 
 ENV BUILD_PACKAGES bash curl-dev curl ruby-dev build-base python3
 ENV RUBY_PACKAGES ruby-full
